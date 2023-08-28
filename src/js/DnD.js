@@ -21,10 +21,14 @@ export default class DnD {
     let list;
     if (!card) {
       list = closest;
-      let upCard = document
-        .elementFromPoint(event.clientX, event.clientY - this.cardsVerticalDistance);
-      let downCard = document
-        .elementFromPoint(event.clientX, event.clientY + this.cardsVerticalDistance);
+      let upCard = document.elementFromPoint(
+        event.clientX,
+        event.clientY - this.cardsVerticalDistance
+      );
+      let downCard = document.elementFromPoint(
+        event.clientX,
+        event.clientY + this.cardsVerticalDistance
+      );
       if (upCard.className.startsWith('list-card')) {
         upCard = upCard.closest('.list-card');
         if (upCard) {
@@ -62,22 +66,23 @@ export default class DnD {
       // если карточки под курсором нет, выходим
       const card = event.target.closest('.list-card');
       if (
-        !card
-        || event.target.classList.contains('list-card-remover')
-        || event.target.className.startsWith('card-composer')
+        !card ||
+        event.target.classList.contains('list-card-remover') ||
+        event.target.className.startsWith('card-composer')
       ) {
         return;
       }
 
       // запоминаем исходное расположение карточки и курсора
-      if (card.nextElementSibling
-        && card.nextElementSibling.classList.contains('list-card')
+      if (
+        card.nextElementSibling &&
+        card.nextElementSibling.classList.contains('list-card')
       ) {
         this.origin.position = 'beforebegin';
         this.origin.sibling = card.nextElementSibling;
       } else if (
-        card.previousElementSibling
-        && card.previousElementSibling.classList.contains('list-card')
+        card.previousElementSibling &&
+        card.previousElementSibling.classList.contains('list-card')
       ) {
         this.origin.position = 'afterend';
         this.origin.sibling = card.previousElementSibling;
@@ -181,8 +186,9 @@ export default class DnD {
 
       const closest = document.elementFromPoint(event.clientX, event.clientY);
       if (
-        Math.trunc(this.origin.left) === parseInt(this.ghostEl.style.left, 10)
-        && Math.trunc(this.origin.top) === parseInt(this.ghostEl.style.top, 10)
+        Math.trunc(this.origin.left) ===
+          parseInt(this.ghostEl.style.left, 10) &&
+        Math.trunc(this.origin.top) === parseInt(this.ghostEl.style.top, 10)
       ) {
         // если карточка в исходном положении, то вернём её обратно
         const target = this.origin.sibling;
@@ -194,12 +200,15 @@ export default class DnD {
         const originalCardsList = this.origin.sibling.closest('.list-cards');
         localStorage.setItem(
           originalCardsList.dataset.key,
-          originalCardsList.innerText,
+          originalCardsList.innerText
         );
         const newCardsList = closest.closest('.list-cards');
         if (originalCardsList !== newCardsList) {
           // если карточка не в старом списке, то обновим LocalStorage нового
-          localStorage.setItem(newCardsList.dataset.key, newCardsList.innerText);
+          localStorage.setItem(
+            newCardsList.dataset.key,
+            newCardsList.innerText
+          );
         }
       } else {
         // иначе возвращаем карточку туда, откуда она была взята

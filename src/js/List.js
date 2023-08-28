@@ -89,46 +89,60 @@ export default class List {
 
   bindToDOM() {
     const { listName, localStorageKey } = this.parentEl.dataset;
-    this.parentEl.innerHTML = this.constructor.listMarkup(listName, localStorageKey);
-
-    const data = localStorage.getItem(localStorageKey);
-    const composer = this.parentEl.querySelector(this.constructor.cardComposerSelector);
-    this.constructor.init(
-      data,
-      composer,
-      this.constructor.cardMarkup,
+    this.parentEl.innerHTML = this.constructor.listMarkup(
+      listName,
+      localStorageKey
     );
 
-    const opener = this.parentEl.querySelector(this.constructor.cardComposerContainerSelector);
-    const textarea = this.parentEl.querySelector(this.constructor.textareaSelector);
-    opener.addEventListener('click', () => this.constructor.openCardComposer(
-      opener,
-      composer,
-      textarea,
-    ));
+    const data = localStorage.getItem(localStorageKey);
+    const composer = this.parentEl.querySelector(
+      this.constructor.cardComposerSelector
+    );
+    this.constructor.init(data, composer, this.constructor.cardMarkup);
 
-    const closer = this.parentEl.querySelector(this.constructor.iconCloseSelector);
-    closer.addEventListener('click', () => this.constructor.closeCardComposer(
-      opener,
-      composer,
-    ));
+    const opener = this.parentEl.querySelector(
+      this.constructor.cardComposerContainerSelector
+    );
+    const textarea = this.parentEl.querySelector(
+      this.constructor.textareaSelector
+    );
+    opener.addEventListener('click', () =>
+      this.constructor.openCardComposer(opener, composer, textarea)
+    );
 
-    composer.addEventListener('click', () => this.constructor.focusOnCardComposer(composer));
+    const closer = this.parentEl.querySelector(
+      this.constructor.iconCloseSelector
+    );
+    closer.addEventListener('click', () =>
+      this.constructor.closeCardComposer(opener, composer)
+    );
 
-    const addBtn = this.parentEl.querySelector(this.constructor.newCardButtonSelector);
-    const cardsList = this.parentEl.querySelector(this.constructor.cardsListSelector);
-    addBtn.addEventListener('click', () => this.constructor.addNewCard(
-      cardsList,
-      composer,
-      this.constructor.cardMarkup(textarea.value),
-    ));
+    composer.addEventListener('click', () =>
+      this.constructor.focusOnCardComposer(composer)
+    );
 
-    cardsList.addEventListener('click', (event) => this.constructor.deleteCard(
-      cardsList,
-      event,
-      this.constructor.cardSelector,
-      this.constructor.cardRemoverSelector,
-    ));
+    const addBtn = this.parentEl.querySelector(
+      this.constructor.newCardButtonSelector
+    );
+    const cardsList = this.parentEl.querySelector(
+      this.constructor.cardsListSelector
+    );
+    addBtn.addEventListener('click', () =>
+      this.constructor.addNewCard(
+        cardsList,
+        composer,
+        this.constructor.cardMarkup(textarea.value)
+      )
+    );
+
+    cardsList.addEventListener('click', (event) =>
+      this.constructor.deleteCard(
+        cardsList,
+        event,
+        this.constructor.cardSelector,
+        this.constructor.cardRemoverSelector
+      )
+    );
   }
 
   static init(data, composer, getMarkup) {
