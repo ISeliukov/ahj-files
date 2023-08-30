@@ -55,38 +55,6 @@ export default class List {
     return '';
   }
 
-  static get cardComposerSelector() {
-    return '.card-composer';
-  }
-
-  static get cardComposerContainerSelector() {
-    return '.card-composer-container';
-  }
-
-  static get iconCloseSelector() {
-    return '.icon-close';
-  }
-
-  static get newCardButtonSelector() {
-    return '.new-card-button';
-  }
-
-  static get textareaSelector() {
-    return '.card-composer-textarea';
-  }
-
-  static get cardsListSelector() {
-    return '.list-cards';
-  }
-
-  static get cardSelector() {
-    return '.list-card';
-  }
-
-  static get cardRemoverSelector() {
-    return '.list-card-remover';
-  }
-
   bindToDOM() {
     const { listName, localStorageKey } = this.parentEl.dataset;
     this.parentEl.innerHTML = this.constructor.listMarkup(
@@ -95,24 +63,20 @@ export default class List {
     );
 
     const data = localStorage.getItem(localStorageKey);
-    const composer = this.parentEl.querySelector(
-      this.constructor.cardComposerSelector
-    );
+    const composer = this.parentEl.querySelector('.card-composer');
+
     this.constructor.init(data, composer, this.constructor.cardMarkup);
 
-    const opener = this.parentEl.querySelector(
-      this.constructor.cardComposerContainerSelector
-    );
-    const textarea = this.parentEl.querySelector(
-      this.constructor.textareaSelector
-    );
+    const opener = this.parentEl.querySelector('.card-composer-container');
+
+    const textarea = this.parentEl.querySelector('.card-composer-textarea');
+
     opener.addEventListener('click', () =>
       this.constructor.openCardComposer(opener, composer, textarea)
     );
 
-    const closer = this.parentEl.querySelector(
-      this.constructor.iconCloseSelector
-    );
+    const closer = this.parentEl.querySelector('.icon-close');
+
     closer.addEventListener('click', () =>
       this.constructor.closeCardComposer(opener, composer)
     );
@@ -121,12 +85,10 @@ export default class List {
       this.constructor.focusOnCardComposer(composer)
     );
 
-    const addBtn = this.parentEl.querySelector(
-      this.constructor.newCardButtonSelector
-    );
-    const cardsList = this.parentEl.querySelector(
-      this.constructor.cardsListSelector
-    );
+    const addBtn = this.parentEl.querySelector('.new-card-button');
+
+    const cardsList = this.parentEl.querySelector('.list-cards');
+
     addBtn.addEventListener('click', () =>
       this.constructor.addNewCard(
         cardsList,
@@ -139,8 +101,8 @@ export default class List {
       this.constructor.deleteCard(
         cardsList,
         event,
-        this.constructor.cardSelector,
-        this.constructor.cardRemoverSelector
+        '.list-card',
+        '.list-card-remover'
       )
     );
   }

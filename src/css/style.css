@@ -5,7 +5,7 @@
 }
 
 a {
-  color: #172b4d;
+  color: #102050;
   text-decoration: none;
 
   cursor: inherit;
@@ -24,8 +24,8 @@ body {
   font-size: 14px;
   line-height: 20px;
 
-  color: #172b4d;
-  background-color: rgb(75, 191, 107);
+  color: #102050;
+  background-color: rgb(20, 20, 100);
 }
 
 .grabbing {
@@ -55,7 +55,7 @@ body {
 .list {
   padding-left: 4px;
 
-  background-color: #ebecf0;
+  background-color: #f0f0f0;
   border-radius: 3px;
 }
 
@@ -94,7 +94,7 @@ body {
 }
 
 .list-cards > .list-card.hover:hover {
-  background-color: #f4f5f7;
+  background-color: #f7f7f7;
 
   cursor: pointer;
 }
@@ -107,7 +107,7 @@ body {
   display: block;
   margin: 0 0 4px 0;
 
-  color: #172b4d;
+  color: #102050;
 
   word-wrap: break-word;
 }
@@ -124,8 +124,8 @@ body {
   font-size: 16px;
   line-height: 1;
 
-  color: #42526e;
-  background-color: #ebecf0;
+  color: #405070;
+  background-color: #f0f0f0;
   border-radius: 3px;
   opacity: 0.8;
 }
@@ -174,7 +174,7 @@ body {
   margin-right: 10px;
 
   color: white;
-  background-color: #0079bf;
+  background-color: #0080c0;
   border: none;
   border-radius: 3px;
 
@@ -182,7 +182,7 @@ body {
 }
 
 .new-card-button.hover:hover {
-  background-color: #026aa7;
+  background-color: #0270b0;
 
   cursor: pointer;
 }
@@ -194,7 +194,7 @@ body {
   font-weight: 800;
   font-size: 18px;
 
-  color: #6b778c;
+  color: #707890;
   border: 0;
 
   cursor: inherit;
@@ -221,13 +221,13 @@ body {
 
   font: inherit;
 
-  color: #5e6c84;
+  color: #607088;
   border: 0;
   border-radius: 3px;
 }
 
 .open-card-composer.hover:hover {
-  color: #172b4d;
+  color: #102050;
   background-color: #091e4214;
 
   cursor: pointer;
@@ -236,7 +236,7 @@ body {
 .icon-add {
   font-size: 23px;
 
-  color: #6b778c;
+  color: #707890;
 }
 
 .icon-add::before {
